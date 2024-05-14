@@ -20,21 +20,20 @@ const StackedComponents = (props) => {
 };
 
 const Container = styled.div`
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
   background-color: white;
   display: grid;
   grid-gap: 40px;
-  // grid-template-columns: repeat(auto-fit, minmax(280px, 600fr));
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
- 
-
 
   align-content: start;
   justify-items: start;
-
   padding: 1rem;
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
+
 `;
 
 const StackedComponent = ({ title, description, image }) => {
@@ -50,9 +49,6 @@ const StackedComponent = ({ title, description, image }) => {
 };
 
 const ComponentContainer = styled.div`
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
   width: 100%;
   margin-right: 20px; /* Adjust spacing between components */
   padding: 3rem 3rem 0rem 3rem;
@@ -80,6 +76,11 @@ const ImageWrapper = styled.div`
   width: 100%;
   border-radius: 16px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  
+  @media screen and (max-width: 320px) {
+    display: none;
+  }
 `;
 
 const Image = styled.img`

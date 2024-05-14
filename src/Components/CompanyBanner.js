@@ -138,6 +138,7 @@ const BannerContainer = styled.div`
   justify-content: center;
   background-color: black;
   padding: 16px 8px;
+  gap: 0px;
 `;
 
 const BannerText = styled.div`
@@ -161,6 +162,7 @@ const CompanyCardContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 20px;
+  margin: 8px;
 `;
 
 const CompanyCard = styled.div`

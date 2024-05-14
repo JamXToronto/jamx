@@ -92,7 +92,7 @@ const HeroPanel = styled.div`
   color: white;
   padding: 80px 20px;
   text-align: center;
-  min-height: 40vh;
+  min-height: 60vh;
   font-family: regular;
   position: relative;
   display: flex;

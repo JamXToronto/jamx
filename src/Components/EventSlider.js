@@ -7,7 +7,7 @@ const EventSlider = (props) => {
 
   return (
     <EventSliderContainer>
-      <h1>Upcoming Events</h1>
+      <h2>Upcoming Events</h2>
       {eventsData.map((data, index) => (
         <Event key={index}>
           <EventImageWrapper>
