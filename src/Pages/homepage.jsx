@@ -17,6 +17,7 @@ import learnByDoingImage from '../assets/learn-by-doing.png'
 import makeStuffThatMattersImage from '../assets/make-stuff-that-matters.png'
 import yourNewCrewAwaitsImage from '../assets/your-new-crew-awaits.png'
 import tbd_event from '../assets/tbd_event.png'
+import ContactForm from '../Components/Input/ContactForm';
 
 
 
@@ -59,8 +60,8 @@ const HomePage = () => {
         <p>
             Inspiring next generational talent to do better for the world.
         </p>
-        {/* <Button onClick={toggleComponent} >Contact Us</Button>
-        {isOpen && <ContactFormPopup onClose={toggleComponent}/>} */}
+        <Button onClick={toggleComponent} >Contact Us</Button>
+        {/* {isOpen && <ContactFormPopup onClose={toggleComponent}/>} */}
       </HeroPanel>
       <CompanyBanner/>
       <div>
@@ -79,6 +80,8 @@ const HomePage = () => {
       </div>
 
       {/* <ContactFormStatic/> */}
+
+      <ContactForm></ContactForm>
       
       {/* Other components or content for the homepage */}
     </ParentApp>

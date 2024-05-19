@@ -3,7 +3,7 @@ import styled from "styled-components";
 import logo from "../assets/jamxicon.svg";
 import { Link } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
-import logo_jam from "./Icon.js";
+
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);

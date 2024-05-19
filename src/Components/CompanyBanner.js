@@ -134,11 +134,11 @@ const CompanyBanner = () => {
 const BannerContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  min-height: 20vh;
   justify-content: center;
   background-color: black;
-  padding: 16px 8px;
+  padding: 20px 8px;
   gap: 0px;
+  flex-direction: column;
 `;
 
 const BannerText = styled.div`
@@ -146,7 +146,7 @@ const BannerText = styled.div`
   align-items: end;
   justify-content: center;
   text-align: center;
-  height: 100%;
+  width: 100%;
   color: white;
 
   h2 {
@@ -156,13 +156,13 @@ const BannerText = styled.div`
 `;
 
 const CompanyCardContainer = styled.div`
-  width: 100%;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: 20px;
-  margin: 8px;
+  margin: 20px;
+
 `;
 
 const CompanyCard = styled.div`
