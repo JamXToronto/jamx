@@ -1,24 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import { Element, scroller } from "react-scroll";
 import styled from 'styled-components';
-import Button from '../Components/index';
-import NavBar from '../Components/NavBar';
-import ContactFormPopup from '../Components/ContactFormPopup';
-import ContactFormStatic from '../Components/ContactFormStatic';
-import StackedComponents from '../Components/StackedComponents';
-import EventSlider from '../Components/EventSlider';
-import VideoComponent from '../Components/VideoComponent';
+import NavBar from '../components/NavBar';
+import StackedComponents from '../components/StackedComponents';
+import UpcomingEvents from '../components/UpcomingEvents';
+import VideoComponent from '../components/VideoComponent';
 // import videoSrc from '../assets/tj4g.mp4'; // Import video file
 import brain from '../assets/brain.png'; // Import video file
-import backgroundImage from '../assets/hero-background.png'
-import CompanyBanner from '../Components/CompanyBanner';
-import TextContainer from '../Components/TextContainer';
-import Footer from '../Components/Footer';
+import CompanyBanner from '../components/CompanyBanner';
+import TextContainer from '../components/TextContainer';
 import learnByDoingImage from '../assets/learn-by-doing.png'
 import makeStuffThatMattersImage from '../assets/make-stuff-that-matters.png'
 import yourNewCrewAwaitsImage from '../assets/your-new-crew-awaits.png'
 import tbd_event from '../assets/tbd_event.png'
-import ContactForm from '../Components/Input/ContactForm';
-
+import HeroPanel from '../components/HeroPanel';
+import ContactUs from '../components/ContactUs';
 
 
 const HomePage = () => {
@@ -43,77 +39,55 @@ const HomePage = () => {
 
       const eventSliderData = [
         { title: 'Jam X Indigenous',  image: tbd_event , date: "TBD"},
-        // { title: 'Event 2',  image: "", date: ""},
-        // { title: 'Event 3',  image: "" , date: ""},
+        { title: 'Test 1',  image: yourNewCrewAwaitsImage , date: "TBD"},
+        { title: 'Test 1',  image: makeStuffThatMattersImage , date: "TBD"},
+  
+    
+        // { title: 'Jam X Indigenous',  image: tbd_event , date: "TBD"},
 
         // Add more data objects for additional components
       ];
 
-
+      const scrollOptions = {
+        duration: 1000,
+        smooth: true,
+      };
+    
+      const contactUsButtonHandler = () => {
+        scroller.scrollTo("contact-us", scrollOptions);
+      };
 
   return (
 
     <ParentApp>
-        <NavBar />
-      <HeroPanel>
-        <h1>Let's Jam, Toronto!</h1>
-        <p>
-            Inspiring next generational talent to do better for the world.
-        </p>
-        <Button onClick={toggleComponent} >Contact Us</Button>
-        {/* {isOpen && <ContactFormPopup onClose={toggleComponent}/>} */}
-      </HeroPanel>
+      <NavBar />
+      <HeroPanel scrollHandler={contactUsButtonHandler}></HeroPanel>
       <CompanyBanner/>
-      <div>
-        <TextContainer text="JamX aims to be the go-to destination for creative and entrepreneurial minds to connect, collaborate, and shape the future. Our vision is to create a world where everyone has the chance to drive meaningful change through innovation and success in the startup ecosystem." />
-      </div>
-      <div id="about">
+      <TextContainer text="JamX aims to be the go-to destination for creative and entrepreneurial minds to connect, collaborate, and shape the future. Our vision is to create a world where everyone has the chance to drive meaningful change through innovation and success in the startup ecosystem." />
+
+      <Element id="about">
         <StackedComponents data={componentsData} />
-      </div>
+      </Element>
+
       {/* <VideoComponent videoSrc={videoSrc} /> */}
-      <div>
+
+      <Element>
         {/* <h1>Meet The Team</h1>
         <StackedComponents data={teamData} /> */}
-      </div>
-      <div id="upcoming-events">
-      <EventSlider eventsData = {eventSliderData}></EventSlider>
-      </div>
+      </Element>
 
-      {/* <ContactFormStatic/> */}
+      <Element id="upcoming-events">
+        <UpcomingEvents eventsData = {eventSliderData}></UpcomingEvents>
+      </Element>
 
-      <ContactForm></ContactForm>
-      
-      {/* Other components or content for the homepage */}
+      <Element id="contact-us">
+        <ContactUs></ContactUs>
+      </Element>
+
     </ParentApp>
   );
 };
 
-const HeroPanel = styled.div`
-  // background-color: #333;
-  background: linear-gradient(rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.72)), url(${backgroundImage});
-  background-size: cover;
-  color: white;
-  padding: 80px 20px;
-  text-align: center;
-  min-height: 60vh;
-  font-family: regular;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  font-size: 1rem;
-
-  p{
-    font-size: 1.5rem;
-  }
-
-  ${Button}{
-    margin: auto auto 0 auto;
-    background-color: #0AAEF5;
-    border: none;
-    color: black;
-    border-radius: 0;
-  }
-`;
 
 const ParentApp = styled.div`
   background-color: #F2EDDC;
