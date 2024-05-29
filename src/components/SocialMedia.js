@@ -20,6 +20,7 @@ const SocialMedia = () => {
 };
 const Container = styled.div`
   display: flex;
+  margin-bottom: 16px;
 `;
 
 

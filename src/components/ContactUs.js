@@ -5,7 +5,9 @@ import ContactItem from "./UI/ContactItem";
 import SocialMedia from "./SocialMedia";
 import Icon from "./UI/Icon";
 
+
 const ContactUs = () => {
+
   return (
     <ContactContainer>
       <ContactInfo>
@@ -16,7 +18,7 @@ const ContactUs = () => {
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
           aliquip ex ea commodo consequat.
         </ContactDescription>
-        <ContactItem text="111-111-111">
+        {/* <ContactItem text="111-111-111">
           <Icon>
             <FaPhone size={24}></FaPhone>
           </Icon>
@@ -25,7 +27,7 @@ const ContactUs = () => {
           <Icon>
             <FaEnvelope size={24}></FaEnvelope>
           </Icon>
-        </ContactItem>
+        </ContactItem> */}
         <SocialMedia></SocialMedia>
       </ContactInfo>
       <ContactForm></ContactForm>
