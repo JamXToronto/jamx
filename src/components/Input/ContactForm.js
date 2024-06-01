@@ -97,11 +97,14 @@ const ContactForm = () => {
       recaptcha: recaptchaValue,
     };
 
-    const res = await fetch("/brevo/add-contact", {
-      method: "POST",
-      body: JSON.stringify(reqData),
-      headers: { "Content-Type": "application/json" },
-    });
+    const res = await fetch(
+      "https://jamx-prod-fqm4d6jubq-uc.a.run.app/brevo/add-contact",
+      {
+        method: "POST",
+        body: JSON.stringify(reqData),
+        headers: { "Content-Type": "application/json" },
+      }
+    );
 
     const data = await res.json();
     console.log(data);
