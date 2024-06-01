@@ -3,9 +3,10 @@ import styled from "styled-components";
 const FormTextInput = (props) => {
   return (
     <Container>
-      <Label>{props.label}</Label>
+      <Label $error={props.error}>{props.label}</Label>
       <InputWrapper>
         <Input
+          $error={props.error}
           type={props.type}
           name={props.name}
           placeholder={props.placeholder}
@@ -13,6 +14,7 @@ const FormTextInput = (props) => {
           value={props.value}
         ></Input>
       </InputWrapper>
+      {props.error && <ErrorText>{props.error}</ErrorText>}
     </Container>
   );
 };
@@ -34,12 +36,13 @@ const Input = styled.input`
   width: 100%;
   transition: border-color 0.3s ease-in-out;
   border-radius: 16x;
-  margin-bottom: 1rem;
 
   &:focus {
     border-color: #007bff;
     outline: none;
   }
+
+  border-color: ${({ $error }) => ($error ? "red" : "")};
 `;
 
 const Label = styled.label`
@@ -50,6 +53,11 @@ const Label = styled.label`
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.02em;
+  color: ${({ $error }) => ($error ? "red" : "")};
+`;
+
+const ErrorText = styled.div`
+  color: red;
 `;
 
 export default FormTextInput;
