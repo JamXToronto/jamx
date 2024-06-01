@@ -1,9 +1,8 @@
 import React from "react";
-import "./App.css";
-import Button from "./Components";
-import Footer from "./Components/Footer";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import HomePage from "./Pages/homepage";
+import "./App.css";
+import Footer from "./components/Footer";
+import HomePage from "./pages/homepage";
 
 const router = createBrowserRouter([
   {
