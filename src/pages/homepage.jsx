@@ -38,11 +38,7 @@ const HomePage = () => {
       ];
 
       const eventSliderData = [
-        { title: 'Jam X Indigenous',  image: tbd_event , date: "TBD"},
-        { title: 'Test 1',  image: yourNewCrewAwaitsImage , date: "TBD"},
-        { title: 'Test 1',  image: makeStuffThatMattersImage , date: "TBD"},
-  
-    
+        { title: 'Jam X Indigenous',  image: tbd_event , date: "TBD"},    
         // { title: 'Jam X Indigenous',  image: tbd_event , date: "TBD"},
 
         // Add more data objects for additional components
