@@ -139,6 +139,7 @@ const BannerContainer = styled.div`
   padding: 20px 8px;
   gap: 0px;
   flex-direction: column;
+  width: 100%;
 `;
 
 const BannerText = styled.div`
@@ -160,7 +161,7 @@ const CompanyCardContainer = styled.div`
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 150px;
   margin: 20px;
 
 `;

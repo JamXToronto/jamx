@@ -24,3 +24,9 @@ code {
   font-family: regular;
   src: url("../src/assets/fonts/untitled-sans-web-regular.woff");
 }
+
+@font-face {
+  font-family: untitled-medium;
+  src: url("../src/assets/fonts/untitled-sans-web-medium.woff");
+}
+
