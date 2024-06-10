@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link as ScrollLink } from "react-scroll";
 import styled from "styled-components";
 import JamX_logo from "../assets/svgs/JamX_logo.svg";
@@ -6,13 +6,41 @@ import logo from "../assets/jamxicon.svg";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showHeader, setShowHeader] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  const controlNavbar = () => {
+    if (window.scrollY > lastScrollY) {
+      // if scroll down hide the navbar
+      setShowHeader(false);
+    } else {
+      // if scroll up show the navbar
+      setShowHeader(true);
+    }
+
+    // remember current page location to use in the next move
+    setLastScrollY(window.scrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", controlNavbar);
+
+    // cleanup function
+    return () => {
+      window.removeEventListener("scroll", controlNavbar);
+    };
+  }, [lastScrollY]);
+
+  const menuClickHandler = () => {
+    setShowHeader(false);
+  };
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
   return (
-    <Header>
+    <Header $show={showHeader}>
       <Nav>
         <Logo to="/">{/* <LogoImage src={JamX_logo}></LogoImage> */}</Logo>
         <MenuIcon onClick={toggleMenu}>
@@ -22,10 +50,20 @@ const NavBar = () => {
         </MenuIcon>
         <Menu open={isOpen}>
           <MenuList>
-            <ScrollLink to="upcoming-events" smooth={true} duration={1000}>
+            <ScrollLink
+              to="upcoming-events"
+              smooth={true}
+              duration={1000}
+              onClick={menuClickHandler}
+            >
               <MenuItem>Upcoming Events</MenuItem>
             </ScrollLink>
-            <ScrollLink to="about" smooth={true} duration={1000}>
+            <ScrollLink
+              to="about"
+              smooth={true}
+              duration={1000}
+              onClick={menuClickHandler}
+            >
               <MenuItem>About Us</MenuItem>
             </ScrollLink>
           </MenuList>
@@ -37,10 +75,14 @@ const NavBar = () => {
 
 const Header = styled.header`
   width: 100%;
-  padding: 40px;
+  padding: 24px 40px;
   position: fixed;
   top: 0;
-  z-index: 2;
+  z-index: 1;
+
+  visibility: ${({ $show }) => ($show ? "" : "hidden")};
+  opacity: ${({ $show }) => ($show ? "100%" : "0%")};
+  transition: visibility 0.3s linear, opacity 0.3s linear;
 `;
 
 const Nav = styled.nav`
@@ -50,8 +92,8 @@ const Nav = styled.nav`
   align-items: center;
   padding: 16px 24px;
   position: relative;
-  z-index: 2;
   border-radius: 32px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 `;
 
 const Logo = styled.a`
@@ -81,7 +123,6 @@ const MenuIcon = styled.div`
     height: 3px;
     background: black;
     margin: 3px;
-    transition: all 0.3s ease;
   }
 
   @media screen and (max-width: 768px) {
@@ -115,21 +156,20 @@ const MenuItem = styled.div`
   text-decoration: none;
   font-size: 1rem;
   padding: 10px 15px;
-  transition: all 0.3s ease;
   margin-right: 8px;
   cursor: pointer; 
   &:hover {
     color: grey;
   }
-
-@media screen and (max-width: 768px) {
-  color: white;
-  padding: 20px 32px 20px 16px;
-  margin-right: 0;
-  &:hover {
-    background: #555;
+    
+  @media screen and (max-width: 768px) {
     color: white;
-  }
+    padding: 20px 32px 20px 16px;
+    margin-right: 0;
+    &:hover {
+      background: #555;
+      color: white;
+    }
 `;
 
 const MenuList = styled.ul`
