@@ -86,7 +86,7 @@ const HomePage = () => {
 
 
 const ParentApp = styled.div`
-  background-color: #F2EDDC;
+background-color: rgba(250,243,253,255);
 `
 
 

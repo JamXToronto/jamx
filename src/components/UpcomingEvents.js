@@ -18,7 +18,10 @@ const UpcomingEvents = (props) => {
 const UpcomingEventsContainer = styled.div`
   justify-content: center;
   align-content: center;
-  margin: 16px;
+  background-color: rgba(250,243,253,255);
+  height: 100%;
+  width: 100%;
+  margin: 0;
 
   h2 {
     align-text: center;
