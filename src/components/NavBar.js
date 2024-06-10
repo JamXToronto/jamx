@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import styled from "styled-components";
-import logo from "../assets/jamxicon.svg";
-import { Link } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
-
+import styled from "styled-components";
+import JamX_logo from "../assets/svgs/JamX_logo.svg";
+import logo from "../assets/jamxicon.svg";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,33 +12,46 @@ const NavBar = () => {
   };
 
   return (
-    <Nav>
-      <Logo to="/"></Logo>
-      <MenuIcon onClick={toggleMenu}>
-        <div className={isOpen ? "open" : ""}></div>
-        <div className={isOpen ? "open" : ""}></div>
-        <div className={isOpen ? "open" : ""}></div>
-      </MenuIcon>
-      <Menu open={isOpen}>
-        <MenuList>
-          <ScrollLink to="upcoming-events" smooth={true} duration={1000}>
-            <MenuItem>Upcoming Event</MenuItem>
-          </ScrollLink>
-          <ScrollLink to="about" smooth={true} duration={1000}>
-            <MenuItem>About Us</MenuItem>
-          </ScrollLink>
-        </MenuList>
-      </Menu>
-    </Nav>
+    <Header>
+      <Nav>
+        <Logo to="/">{/* <LogoImage src={JamX_logo}></LogoImage> */}</Logo>
+        <MenuIcon onClick={toggleMenu}>
+          <div className={isOpen ? "open" : ""}></div>
+          <div className={isOpen ? "open" : ""}></div>
+          <div className={isOpen ? "open" : ""}></div>
+        </MenuIcon>
+        <Menu open={isOpen}>
+          <MenuList>
+            <ScrollLink to="upcoming-events" smooth={true} duration={1000}>
+              <MenuItem>Upcoming Events</MenuItem>
+            </ScrollLink>
+            <ScrollLink to="about" smooth={true} duration={1000}>
+              <MenuItem>About Us</MenuItem>
+            </ScrollLink>
+          </MenuList>
+        </Menu>
+      </Nav>
+    </Header>
   );
 };
+
+const Header = styled.header`
+  width: 100%;
+  padding: 40px;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+`;
+
 const Nav = styled.nav`
+  background-color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 40px;
+  padding: 16px 24px;
   position: relative;
   z-index: 2;
+  border-radius: 32px;
 `;
 
 const Logo = styled.a`
@@ -48,14 +60,21 @@ const Logo = styled.a`
   background-repeat: no-repeat;
   background-position: center; /* Center the background image */
   width: 25vw; /* Adjust width using vw units */
-  max-width: 250px; /* Set max-width to maintain proportion */
-  height: 50px; /* Allow height to adjust proportionally */
+  max-width: 120px; /* Set max-width to maintain proportion */
+  height: 40px; /* Allow height to adjust proportionally */
+`;
+
+const LogoImage = styled.img`
+  width: 40px;
+  height: 40px;
 `;
 
 const MenuIcon = styled.div`
   display: none;
   flex-direction: column;
   cursor: pointer;
+  height: 40px;
+  justify-content: center;
 
   div {
     width: 25px;
@@ -77,9 +96,10 @@ const Menu = styled.div`
   box-sizing: border-box;
 
   @media screen and (max-width: 768px) {
+    border-radius: 8px;
     flex-direction: column;
     position: absolute;
-    top: 82px;
+    top: 80px;
     left: 0;
     background: black;
     width: 100%;
@@ -90,20 +110,21 @@ const Menu = styled.div`
 `;
 
 const MenuItem = styled.div`
-color: black;
-text-decoration: none;
-font-size: 1rem;
-padding: 10px 15px;
-transition: all 0.3s ease;
-margin-right: 8px;
-cursor: pointer; 
-&:hover {
-  color: grey;
-}
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 10px 15px;
+  transition: all 0.3s ease;
+  margin-right: 8px;
+  cursor: pointer; 
+  &:hover {
+    color: grey;
+  }
 
 @media screen and (max-width: 768px) {
   color: white;
-  padding: 10px 0;
+  padding: 20px 32px 20px 16px;
   margin-right: 0;
   &:hover {
     background: #555;
@@ -127,16 +148,6 @@ const MenuList = styled.ul`
     }
   }
 }
-`;
-
-const CustomLink = styled(Link)`
-  text-decoration: none;
-  color: inherit;
-
-  /* Set cursor to pointer on hover */
-  &:hover {
-    cursor: pointer;
-  }
 `;
 
 const Seperator = styled.hr`
