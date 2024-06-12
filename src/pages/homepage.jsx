@@ -58,7 +58,7 @@ const HomePage = () => {
     <ParentApp>
       <NavBar />
       <HeroPanel scrollHandler={contactUsButtonHandler}></HeroPanel>
-      <CompanyBanner/>
+      {/* <CompanyBanner/> */}
       <TextContainer text="JamX aims to be the go-to destination for creative and entrepreneurial minds to connect, collaborate, and shape the future. Our vision is to create a world where everyone has the chance to drive meaningful change through innovation and success in the startup ecosystem." />
 
       <Element id="about">
@@ -86,7 +86,7 @@ const HomePage = () => {
 
 
 const ParentApp = styled.div`
-  background-color: #F2EDDC;
+background-color: rgba(250,243,253,255);
 `
 
 
