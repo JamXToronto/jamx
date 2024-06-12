@@ -42,7 +42,9 @@ const NavBar = () => {
   return (
     <Header $show={showHeader}>
       <Nav>
-        <Logo to="/">{/* <LogoImage src={JamX_logo}></LogoImage> */}</Logo>
+        <Logo to="/">
+          <LogoImage src={JamX_logo}></LogoImage>
+        </Logo>
         <MenuIcon onClick={toggleMenu}>
           <div className={isOpen ? "open" : ""}></div>
           <div className={isOpen ? "open" : ""}></div>
@@ -97,13 +99,13 @@ const Nav = styled.nav`
 `;
 
 const Logo = styled.a`
-  background-image: url(${logo});
-  background-size: 220px auto; /* Adjust the width as needed, 'auto' will maintain aspect ratio */
-  background-repeat: no-repeat;
-  background-position: center; /* Center the background image */
-  width: 25vw; /* Adjust width using vw units */
-  max-width: 120px; /* Set max-width to maintain proportion */
-  height: 40px; /* Allow height to adjust proportionally */
+  // background-image: url(${logo});
+  // background-size: 220px auto; /* Adjust the width as needed, 'auto' will maintain aspect ratio */
+  // background-repeat: no-repeat;
+  // background-position: center; /* Center the background image */
+  // width: 25vw; /* Adjust width using vw units */
+  // max-width: 120px; /* Set max-width to maintain proportion */
+  // height: 40px; /* Allow height to adjust proportionally */
 `;
 
 const LogoImage = styled.img`
