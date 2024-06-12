@@ -1,10 +1,8 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import Button from "./Input/Button";
-import { FiArrowRight } from 'react-icons/fi';
+import { FiArrowRight } from "react-icons/fi";
 import CompanyBanner from "./CompanyBanner";
-
-// Import your background image
 import backgroundImage from "../assets/hero-background.png";
 
 // Define the keyframes for the animation
@@ -28,14 +26,37 @@ const particleAnimation = keyframes`
     }
 `;
 
-
+// Functional component
+const HeroPanel = (props) => {
+  return (
+    <Container>
+      <ContentContainer>
+        <div></div>
+        <h1>
+          Service Design Jam. <br />
+          Finding Solutions.
+          <br />& Problems.
+        </h1>
+        <Button onClick={props.scrollHandler}>
+          <CircleDiv>
+            <FiArrowRight color="white" size={24} />
+          </CircleDiv>
+          <h3>Contact Us</h3>
+        </Button>
+        <p>Inspiring next generational talent to do better for the world.</p>
+      </ContentContainer>
+      <BannerWrapper>
+        <StyledCompanyBanner />
+      </BannerWrapper>
+    </Container>
+  );
+};
 
 // Define your styled component
 const Container = styled.div`
-  background-color: rgba(215, 207, 223, 255);
+  background-color: ${(props) => props.theme.primary};
   background-size: cover;
   color: white;
-  padding: 80px 0px 0px 0px;
   text-align: center;
   min-height: 100vh;
   font-family: untitled-medium;
@@ -45,11 +66,32 @@ const Container = styled.div`
   justify-content: center; /* Center vertically */
   align-items: center; /* Center horizontally */
 
+  }
+`;
+
+const ContentContainer = styled.div`
+  font-family: untitled-medium;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  flex: 1;
+
+  div {
+    height: 48px;
+  }
+
   h1 {
     font-size: min(90px, 8.8vw);
-    letter-spacing: -.02em;
-    line-height: .85em;
-    background: linear-gradient(to right, rgb(68,32,153), rgb(156,69,222), rgb(216,110,239));
+    letter-spacing: -0.02em;
+    line-height: 0.85em;
+    background: linear-gradient(
+      to right,
+      rgb(68, 32, 153),
+      rgb(156, 69, 222),
+      rgb(216, 110, 239)
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-size: 200% auto;
@@ -59,7 +101,12 @@ const Container = styled.div`
 
   p {
     font-size: 1.25rem;
-    background: linear-gradient(to right, rgb(68,32,153), rgb(156,69,222), rgb(216,110,239));
+    background: linear-gradient(
+      to right,
+      rgb(68, 32, 153),
+      rgb(156, 69, 222),
+      rgb(216, 110, 239)
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -92,44 +139,35 @@ const StyledCompanyBanner = styled(CompanyBanner)`
 `;
 
 const CircleDiv = styled.div`
-    width: 50px;
-    height: 50px;
-    background-color: purple;
-    border-radius: 50%;
-    position: absolute;
-    right: 35px;
-    top: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform: translate(50%, -50%) scale(1);
-    transition: transform 0.3s ease-in-out, background-color 0.3s; /* Transition for transform and background-color */
-    cursor: pointer; /* Show pointer cursor on hover */
+  width: 50px;
+  height: 50px;
+  background-color: purple;
+  border-radius: 50%;
+  position: absolute;
+  right: 35px;
+  top: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(50%, -50%) scale(1);
+  transition: transform 0.3s ease-in-out, background-color 0.3s; /* Transition for transform and background-color */
+  cursor: pointer; /* Show pointer cursor on hover */
 
-    ${Button}:hover & {
-      transform: translate(50%, -50%) scale(1.1);
-      background: linear-gradient(to right, rgb(68,32,153), rgb(156,69,222), rgb(216,110,239)); /* Change background color on hover */
-    }
+  ${Button}:hover & {
+    transform: translate(50%, -50%) scale(1.1);
+    background: linear-gradient(
+      to right,
+      rgb(68, 32, 153),
+      rgb(156, 69, 222),
+      rgb(216, 110, 239)
+    ); /* Change background color on hover */
+  }
 `;
 
- 
-
-
-// Functional component
-const HeroPanel = (props) => {
-  return (
-    <div>
-    <Container>
-      <h1>Service Design Jam. <br />Finding Solutions.<br />& Problems.</h1>
-      <Button onClick={props.scrollHandler}>  
-        <CircleDiv><FiArrowRight color="white" size={24} /></CircleDiv>
-        <h3>Contact Us</h3>
-      </Button>
-      <p>Inspiring next generational talent to do better for the world.</p>
-      <StyledCompanyBanner />
-    </Container>
-    </div>
-  );
-};
+const BannerWrapper = styled.div`
+  bottom: 0;
+  left: 0;
+  width: 100%;
+`;
 
 export default HeroPanel;
