@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import ContentItem from "./UI/ContentItem";
 
 const StackedComponents = (props) => {
   // Data for each stacked component
@@ -7,8 +8,16 @@ const StackedComponents = (props) => {
 
   return (
     <Container>
-      {componentsData.map((data, index) => (
+      {/* {componentsData.map((data, index) => (
         <StackedComponent
+          key={index}
+          title={data.title}
+          description={data.description}
+          image={data.image}
+        />
+      ))} */}
+      {componentsData.map((data, index) => (
+        <ContentItem
           key={index}
           title={data.title}
           description={data.description}
@@ -21,9 +30,8 @@ const StackedComponents = (props) => {
 
 const Container = styled.div`
   background-color: white;
-  display: grid;
-  grid-gap: 40px;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  display: flex;
+  flex-direction: column;
 
   align-content: start;
   justify-items: start;
@@ -33,7 +41,6 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
   }
-
 `;
 
 const StackedComponent = ({ title, description, image }) => {
@@ -52,7 +59,7 @@ const ComponentContainer = styled.div`
   width: 100%;
   margin-right: 20px; /* Adjust spacing between components */
   padding: 3rem 3rem 0rem 3rem;
-   
+
   text-align: center;
   align-self: start;
   height: 100%;
@@ -77,7 +84,6 @@ const ImageWrapper = styled.div`
   border-radius: 16px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
-  
   @media screen and (max-width: 320px) {
     display: none;
   }

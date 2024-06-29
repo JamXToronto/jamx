@@ -25,8 +25,8 @@ const HomePage = () => {
 
       const componentsData = [
         { title: 'Make Stuff That Matters', description: 'Ever wanted to change the world with your ideas? This is your playground. Meet cool folks from all corners of Toronto and create solutions that’ll make a difference. It’s teamwork with a side of fun and a splash of revolution.', image: makeStuffThatMattersImage },
-        { title: 'Your New Crew Awaits', description: 'Network without the awkward. Hang out with artists, techies, and leaders who are as into making a difference as you are. It’s like finding your tribe, but with more post-it notes and coffee.', image: yourNewCrewAwaitsImage },
         { title: 'Learn By Doing', description: `Boost your brainpower and pick up new skills without snoozing through a lecture. It’s learning the best stuff by actually doing it. You'll leave with your brain buzzing and your resume shining.`, image: learnByDoingImage },
+        { title: 'Your New Crew Awaits', description: 'Network without the awkward. Hang out with artists, techies, and leaders who are as into making a difference as you are. It’s like finding your tribe, but with more post-it notes and coffee.', image: yourNewCrewAwaitsImage },
         // Add more data objects for additional components
       ];
 
