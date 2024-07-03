@@ -79,6 +79,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 100;
 `;
 
 const ContentContainer = styled.div`
@@ -112,6 +113,7 @@ const ContentContainer = styled.div`
     margin: 2.5% 0;
     padding: 20px;
     text-align: left;
+    z-index: 100;
   }
 
   p {
@@ -145,6 +147,7 @@ const ContentContainer = styled.div`
 
     &:hover {
       transform: scale(1.1);
+      transition: transform 0.3s ease-in-out;
     }
   }
 `;
@@ -157,7 +160,7 @@ const StyledCompanyBanner = styled(CompanyBanner)`
 const CircleDiv = styled.div`
   width: 50px;
   height: 50px;
-  background-color: purple;
+  background-color: ${(props) => props.theme.primaryGradient};
   border-radius: 50%;
   position: absolute;
   right: 35px;
@@ -171,12 +174,7 @@ const CircleDiv = styled.div`
 
   ${Button}:hover & {
     transform: translate(50%, -50%) scale(1.1);
-    background: linear-gradient(
-      to right,
-      rgb(68, 32, 153),
-      rgb(156, 69, 222),
-      rgb(216, 110, 239)
-    ); /* Change background color on hover */
+    background: ${(props) => props.theme.gradient}; /* Change background color on hover */
   }
 `;
 
@@ -204,13 +202,13 @@ const ImageWrapper = styled.div`
 `;
 
 const ImageLayer = styled.img`
-  box-shadow: 32px 32px ${(props) => props.theme.secondary};
+  box-shadow: 32px 32px ${(props) => props.theme.primaryGradient};
   border-radius: 40px;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: 30% 10%;
-  filter: brightness(70%);
+  filter: brightness(50%);
 `;
 
 export default HeroPanel;
