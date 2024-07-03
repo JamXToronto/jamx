@@ -5,8 +5,8 @@ import { FiArrowRight } from "react-icons/fi";
 import CompanyBanner from "./CompanyBanner";
 import backgroundImage from "../assets/hero-background.png";
 import ContentItem from "./UI/ContentItem";
-import makeStuffThatMattersImage from '../assets/make-stuff-that-matters.png'
-import yourNewCrewAwaitsImage from '../assets/your-new-crew-awaits.png'
+import makeStuffThatMattersImage from "../assets/make-stuff-that-matters.png";
+import yourNewCrewAwaitsImage from "../assets/your-new-crew-awaits.png";
 
 // Define the keyframes for the animation
 const gradientAnimation = keyframes`
@@ -29,39 +29,42 @@ const particleAnimation = keyframes`
     }
 `;
 
-const componentsData = { title: 'Make Stuff That Matters', description: 'Ever wanted to change the world with your ideas? This is your playground. Meet cool folks from all corners of Toronto and create solutions that’ll make a difference. It’s teamwork with a side of fun and a splash of revolution.', image: yourNewCrewAwaitsImage }
-  // Add more data objects for additional components
-;
-
+const componentsData = {
+  title: "Make Stuff That Matters",
+  description:
+    "Ever wanted to change the world with your ideas? This is your playground. Meet cool folks from all corners of Toronto and create solutions that’ll make a difference. It’s teamwork with a side of fun and a splash of revolution.",
+  image: yourNewCrewAwaitsImage,
+};
+// Add more data objects for additional components
 // Functional component
 const HeroPanel = (props) => {
   return (
     <>
-    <Container>
-      <ContentContainer>
-        <div></div>
-        <h1>
-          Service Design Jam. <br />
-          Finding Solutions.
-          <br />& Problems.
-        </h1>
-        <Button onClick={props.scrollHandler}>
-          <CircleDiv>
-            <FiArrowRight color="white" size={24} />
-          </CircleDiv>
-          <h3>Contact Us</h3>
-        </Button>
-       {/* <p>Inspiring next generational talent to do better for the world.</p> */}
-      </ContentContainer>
-      <HeroContentImage>
-      <ImageWrapper>
-        <ImageLayer src={componentsData.image}></ImageLayer>
-      </ImageWrapper>
-    </HeroContentImage>
-    </Container>
-    <BannerWrapper>
+      <Container>
+        <ContentContainer>
+          <div></div>
+          <h1>
+            Service Design Jam. <br />
+            Finding Solutions.
+            <br />& Problems.
+          </h1>
+          <Button onClick={props.scrollHandler}>
+            <CircleDiv>
+              <FiArrowRight color="white" size={24} />
+            </CircleDiv>
+            <h3>Contact Us</h3>
+          </Button>
+          {/* <p>Inspiring next generational talent to do better for the world.</p> */}
+        </ContentContainer>
+        <HeroContentImage>
+          <ImageWrapper>
+            <ImageLayer src={componentsData.image}></ImageLayer>
+          </ImageWrapper>
+        </HeroContentImage>
+      </Container>
+      <BannerWrapper>
         <StyledCompanyBanner />
-    </BannerWrapper>
+      </BannerWrapper>
     </>
   );
 };
@@ -188,19 +191,19 @@ const BannerWrapper = styled.div`
 
 const HeroContentImage = styled.div`
   position: absolute;
-  top: 5rem;
+  top: 10rem;
   right: 10rem;
   z-index: 1;
 
   @media screen and (max-width: 768px) {
     display: none;
   }
+  
 `;
 
 const ImageWrapper = styled.div`
   padding: 40px;
-  max-width: 800px;
-  max-height: 400px;
+  height: 100%;
 `;
 
 const ImageLayer = styled.img`
@@ -214,5 +217,3 @@ const ImageLayer = styled.img`
 `;
 
 export default HeroPanel;
-
-
