@@ -172,7 +172,7 @@ const ContactForm = () => {
 
 const FormWrapper = styled.div`
   flex-direction: column;
-  background-color: ${(props) => props.theme.secondary};;
+  background-color: ${(props) => props.theme.primaryGradient};
   padding: 40px;
   border-radius: 32px;
 `;
@@ -180,7 +180,7 @@ const FormWrapper = styled.div`
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  background-color: pink;
+  background-color: white;
   padding: 40px;
   width: 100%;
   margin: auto;

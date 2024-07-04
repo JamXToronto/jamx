@@ -32,7 +32,7 @@ const ContactUs = () => {
 };
 
 const ContactContainer = styled.div`
-  background-color: white;
+  background-color: ${(props) => props.theme.primary};;
   display: flex;
   padding: 40px;
 

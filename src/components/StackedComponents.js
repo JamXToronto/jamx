@@ -1,35 +1,42 @@
 import React from "react";
 import styled from "styled-components";
 import ContentItem from "./UI/ContentItem";
+import OddContentItem from "./UI/OddContentItem"; // Assuming you have a component for odd indices
 
 const StackedComponents = (props) => {
-  // Data for each stacked component
   const componentsData = props.data;
 
   return (
     <Container>
-      {/* {componentsData.map((data, index) => (
-        <StackedComponent
-          key={index}
-          title={data.title}
-          description={data.description}
-          image={data.image}
-        />
-      ))} */}
-      {componentsData.map((data, index) => (
-        <ContentItem
-          key={index}
-          title={data.title}
-          description={data.description}
-          image={data.image}
-        />
-      ))}
+      {componentsData.map((data, index) => {
+        if (index % 2 === 0) {
+          // Even index, render ContentItem
+          return (
+            <ContentItem
+              key={index}
+              title={data.title}
+              description={data.description}
+              image={data.image}
+            />
+          );
+        } else {
+          // Odd index, render OddContentItem (assuming this component exists)
+          return (
+            <OddContentItem
+              key={index}
+              title={data.title}
+              description={data.description}
+              image={data.image}
+            />
+          );
+        }
+      })}
     </Container>
   );
 };
 
 const Container = styled.div`
-  background-color: white;
+background-color: ${(props) => props.theme.primary};
   display: flex;
   flex-direction: column;
 

@@ -72,9 +72,9 @@ const HomePage = () => {
         <StackedComponents data={teamData} /> */}
       </Element>
 
-      <Element id="upcoming-events">
+      {/* <Element id="upcoming-events">
         <UpcomingEvents eventsData = {eventSliderData}></UpcomingEvents>
-      </Element>
+      </Element> */}
 
       <Element id="contact-us">
         <ContactUs></ContactUs>

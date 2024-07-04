@@ -59,6 +59,7 @@ const HeroPanel = (props) => {
         <HeroContentImage>
           <ImageWrapper>
             <ImageLayer src={componentsData.image}></ImageLayer>
+            
           </ImageWrapper>
         </HeroContentImage>
       </Container>
