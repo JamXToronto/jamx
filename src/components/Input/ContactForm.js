@@ -49,17 +49,12 @@ const ContactForm = () => {
       setEmailError("Email should not be empty.");
     }
 
-    if (!recaptchaRef.current.getValue()) {
-      console.log("reCAPTCHA is not complete.");
-    }
-
     return (
       firstName.trim() === "" ||
       format.test(firstName) ||
       lastName.trim() === "" ||
       format.test(lastName) ||
-      email.trim() === "" ||
-      !recaptchaRef.current.getValue()
+      email.trim() === ""
     );
   };
 
@@ -85,8 +80,10 @@ const ContactForm = () => {
     // Add your form submission logic here
     console.log(formData);
 
-    const recaptchaValue = recaptchaRef.current.getValue();
+    recaptchaRef.current.execute();
 
+    const recaptchaValue = await recaptchaRef.current.executeAsync();
+  
     if (hasInputErrors()) {
       return;
     }
@@ -99,6 +96,7 @@ const ContactForm = () => {
 
     const res = await fetch(
       "https://jamx-prod-fqm4d6jubq-uc.a.run.app/brevo/add-contact",
+      // "http://localhost:3001/brevo/add-contact",
       {
         method: "POST",
         body: JSON.stringify(reqData),
@@ -108,17 +106,19 @@ const ContactForm = () => {
 
     const data = await res.json();
     console.log(data);
+    // Add errors to UI
+
     if (!data.error) {
       setSubmissionIsSuccessful(true);
     }
   };
 
   return (
-    <Form onSubmit={submitHandler}>
-      {!submissionIsSuccessful && (
-        <React.Fragment>
-          <h3>Subscribe to stay updated!</h3>
-          <FormNameInputContainer>
+    <FormWrapper>
+      <Form onSubmit={submitHandler}>
+        {!submissionIsSuccessful && (
+          <React.Fragment>
+            <h2>Subscribe to stay updated!</h2>
             <FormTextInput
               type="text"
               name="firstName"
@@ -138,44 +138,52 @@ const ContactForm = () => {
               value={formData.lastName}
               error={lastNameError}
             ></FormTextInput>
-          </FormNameInputContainer>
-          <FormTextInput
-            type="email"
-            name="email"
-            label="Email"
-            placeholder="jane@example.com"
-            onChangeHandler={textChangeHandler}
-            value={formData.email}
-            error={emailError}
-          ></FormTextInput>
-          <ReCAPTCHAWrapper>
-            <ReCAPTCHA
-              ref={recaptchaRef}
-              sitekey="6Ld2L-4pAAAAANcvsuvaeH7pGCuwCT7ivbRxTVnH"
-            ></ReCAPTCHA>
-          </ReCAPTCHAWrapper>
-          <FormConsentText>
-            By submitting this form, you agree to receive email marketing
-            messages from JamX at the submitted email address. You can withdraw
-            your consent at any time by following the unsubscribe instructions
-            in any email we send to you.
-          </FormConsentText>
-          <FormButton type="submit">Subscribe</FormButton>
-        </React.Fragment>
-      )}
-      {submissionIsSuccessful && (
-        <SuccessMessage>Thank you for subscribing!</SuccessMessage>
-      )}
-    </Form>
+            <FormTextInput
+              type="email"
+              name="email"
+              label="Email"
+              placeholder="jane@example.com"
+              onChangeHandler={textChangeHandler}
+              value={formData.email}
+              error={emailError}
+            ></FormTextInput>
+            <FormConsentText>
+              By submitting this form, you agree to receive email marketing
+              messages from JamX at the submitted email address. You can
+              withdraw your consent at any time by following the unsubscribe
+              instructions in any email we send to you.
+            </FormConsentText>
+            <ReCAPTCHAWrapper>
+              <ReCAPTCHA
+                ref={recaptchaRef}
+                sitekey="6Lc3vg4qAAAAADb6oh7VhCszqw2u6WVRAAiwC1TB"
+                size="invisible"
+              ></ReCAPTCHA>
+            </ReCAPTCHAWrapper>
+
+            <FormButton type="submit">Subscribe</FormButton>
+          </React.Fragment>
+        )}
+        {submissionIsSuccessful && (
+          <SuccessMessage>Thank you for subscribing!</SuccessMessage>
+        )}
+      </Form>
+    </FormWrapper>
   );
 };
+
+const FormWrapper = styled.div`
+  flex-direction: column;
+  background-color: ${(props) => props.theme.primaryGradient};
+  padding: 40px;
+  border-radius: 32px;
+`;
 
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  padding: 24px;
+  background-color: white;
+  padding: 40px;
   width: 100%;
   margin: auto;
   border-radius: 16px;
@@ -211,9 +219,9 @@ const FormButton = styled.button`
   color: #fff;
   cursor: pointer;
   font-size: 16px;
-  padding: 10px;
+  padding: 12px;
   transition: background-color 0.3s ease;
-  margin: auto;
+  margin-right: auto;
 
   &:hover {
     background-color: #0056b3;
@@ -227,9 +235,8 @@ const SuccessMessage = styled.div`
 `;
 
 const ReCAPTCHAWrapper = styled.div`
-  display: flex;
-  justify-content: center;
   padding-bottom: 20px;
+  display: flex;
 `;
 
 export default ContactForm;

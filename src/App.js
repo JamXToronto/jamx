@@ -6,9 +6,18 @@ import Footer from "./components/Footer";
 import HomePage from "./pages/homepage";
 
 const theme = {
-  primary: "rgba(215, 207, 223, 255)",
-  secondary: "",
+  primary: "black",
+  secondary: "rgba(215, 207, 223, 255)",
   tertiary: "",
+  primaryGradient: "rgb(78, 193, 185)",
+  secondaryGradient: "rgb(30,255, 228)",
+  tertiaryGradient: "rgb(158, 253, 173)",
+  gradient: `linear-gradient(
+    to right,
+    rgb(78, 193, 185),
+    rgb(30,255, 228),
+    rgb(158, 253, 173)
+  );`,
 };
 
 const router = createBrowserRouter([

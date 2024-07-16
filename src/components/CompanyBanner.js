@@ -159,8 +159,7 @@ const BannerText = styled.div`
 const CompanyCardContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 150px;
+  justify-content: space-evenly;
   margin: 20px;
 `;
 
@@ -174,11 +173,6 @@ const CompanyCard = styled.div`
   border-radius: 10px;
   text-align: center;
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
 
   div {
     padding: 10px;

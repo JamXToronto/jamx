@@ -8,13 +8,13 @@ import Icon from "./UI/Icon";
 const ContactUs = () => {
   return (
     <ContactContainer>
-      <ContactInfo>
+      {/* <ContactInfo>
         <ContactHeader>Stay Connected</ContactHeader>
         <ContactDescription>
           Sign up for our emails to get the upcoming event information from
           JamX, early bird offerings, sponsor opportunities, and much more.
         </ContactDescription>
-        {/* <ContactItem text="111-111-111">
+        <ContactItem text="111-111-111">
           <Icon>
             <FaPhone size={24}></FaPhone>
           </Icon>
@@ -23,16 +23,16 @@ const ContactUs = () => {
           <Icon>
             <FaEnvelope size={24}></FaEnvelope>
           </Icon>
-        </ContactItem> */}
+        </ContactItem>
         <SocialMedia></SocialMedia>
-      </ContactInfo>
+      </ContactInfo> */}
       <ContactForm></ContactForm>
     </ContactContainer>
   );
 };
 
 const ContactContainer = styled.div`
-  background-color: white;
+  background-color: ${(props) => props.theme.primary};;
   display: flex;
   padding: 40px;
 

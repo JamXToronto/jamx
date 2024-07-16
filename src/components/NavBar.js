@@ -80,7 +80,7 @@ const Header = styled.header`
   padding: 24px 40px;
   position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 10000;
 
   visibility: ${({ $show }) => ($show ? "" : "hidden")};
   opacity: ${({ $show }) => ($show ? "100%" : "0%")};

@@ -11,7 +11,7 @@ const Container = styled.div`
   flex-direction: column;
   padding: 40px;
   gap: 20px;
-  background-color: rgba(250,243,253,255);
+  background-color: ${(props) => props.theme.primary};
   background-size: cover;
 `;
 
@@ -38,7 +38,7 @@ const Heading = styled.h1`
   font-size: min(90px, 8.8vw);
   letter-spacing: -.02em;
   line-height: .85em;
-  background: linear-gradient(to right, rgb(68,32,153), rgb(156,69,222), rgb(216,110,239));
+  background: ${(props) => props.theme.gradient};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-size: 200% auto;
@@ -47,7 +47,7 @@ const Heading = styled.h1`
   font-weight: 500;
 
   span {
-    background: rgb(216,110,239);
+    background: ${(props) => props.theme.tertiaryGradient};
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -67,6 +67,7 @@ const Title = styled.div`
   margin: 3.5% 0 0 0%;
   h2 {
     padding: 0 5px;
+    color: ${(props) => props.theme.primary};
   }
 `;
 
