@@ -49,17 +49,12 @@ const ContactForm = () => {
       setEmailError("Email should not be empty.");
     }
 
-    if (!recaptchaRef.current.getValue()) {
-      console.log("reCAPTCHA is not complete.");
-    }
-
     return (
       firstName.trim() === "" ||
       format.test(firstName) ||
       lastName.trim() === "" ||
       format.test(lastName) ||
-      email.trim() === "" ||
-      !recaptchaRef.current.getValue()
+      email.trim() === ""
     );
   };
 
@@ -85,8 +80,10 @@ const ContactForm = () => {
     // Add your form submission logic here
     console.log(formData);
 
-    const recaptchaValue = recaptchaRef.current.getValue();
+    recaptchaRef.current.execute();
 
+    const recaptchaValue = await recaptchaRef.current.executeAsync();
+  
     if (hasInputErrors()) {
       return;
     }
@@ -99,6 +96,7 @@ const ContactForm = () => {
 
     const res = await fetch(
       "https://jamx-prod-fqm4d6jubq-uc.a.run.app/brevo/add-contact",
+      // "http://localhost:3001/brevo/add-contact",
       {
         method: "POST",
         body: JSON.stringify(reqData),
@@ -108,6 +106,8 @@ const ContactForm = () => {
 
     const data = await res.json();
     console.log(data);
+    // Add errors to UI
+
     if (!data.error) {
       setSubmissionIsSuccessful(true);
     }
@@ -156,9 +156,11 @@ const ContactForm = () => {
             <ReCAPTCHAWrapper>
               <ReCAPTCHA
                 ref={recaptchaRef}
-                sitekey="6Ld2L-4pAAAAANcvsuvaeH7pGCuwCT7ivbRxTVnH"
+                sitekey="6Lc3vg4qAAAAADb6oh7VhCszqw2u6WVRAAiwC1TB"
+                size="invisible"
               ></ReCAPTCHA>
             </ReCAPTCHAWrapper>
+
             <FormButton type="submit">Subscribe</FormButton>
           </React.Fragment>
         )}
@@ -235,7 +237,6 @@ const SuccessMessage = styled.div`
 const ReCAPTCHAWrapper = styled.div`
   padding-bottom: 20px;
   display: flex;
-
 `;
 
 export default ContactForm;

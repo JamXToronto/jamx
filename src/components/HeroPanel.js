@@ -142,6 +142,7 @@ const ContentContainer = styled.div`
     min-width: 250px;
     // margin: auto;
     position: relative;
+    z-index: 3;
 
     h3 {
       text-align: left;

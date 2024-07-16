@@ -67,6 +67,7 @@ const Title = styled.div`
   margin: 3.5% 0 0 0%;
   h2 {
     padding: 0 5px;
+    color: ${(props) => props.theme.primary};
   }
 `;
 

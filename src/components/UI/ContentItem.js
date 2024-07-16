@@ -16,8 +16,16 @@ const ContentItem = (props) => {
 
 const ContentContainer = styled.div`
   display: flex;
+  width: 100%;
   justify-content: center;
-  margin: 60px;
+  margin: 20px;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
 `;
 
 const InfoContainer = styled.div`
@@ -26,6 +34,11 @@ const InfoContainer = styled.div`
   justify-content: center;
   padding: 40px;
   max-width: 600px;
+
+  @media screen and (max-width: 768px) {
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const Title = styled.h2`
@@ -47,13 +60,28 @@ const Description = styled.p`
 
   font-weight: 200;
   color: white;
+
+  
+  @media screen and (max-width: 768px) {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
 `;
 
 const ImageWrapper = styled.div`
   align-content: center;
+
+  max-width: 560px;
+  max-height: 560px;
   padding: 40px;
-  max-width: 500px;
-  max-height: 500px;
+
+  @media screen and (max-width: 768px) {
+    padding: 16px 16px 0px 16px;
+    padding: 0px;
+    max-width: 400px;
+    max-height: 400px;
+  }
 `;
 
 const ImageLayer = styled.img`
@@ -64,6 +92,10 @@ const ImageLayer = styled.img`
   object-fit: cover;
   object-position: 30% 10%;
 
+  @media screen and (max-width: 768px) {
+    max-width: 400px;
+    max-height: 400px;
+  }
 `;
 
 // const ImageWrapper = styled.div`
@@ -76,8 +108,8 @@ const ImageLayer = styled.img`
 // const ImageLayer = styled.img`
 //   box-shadow: 32px 32px green;
 //   border-radius: 40px;
-//   max-width: 100%;
-//   max-height: 100%;
+// max-width: 100%;
+// max-height: 100%;
 // `;
 
 export default ContentItem;

@@ -36,7 +36,7 @@ const StackedComponents = (props) => {
 };
 
 const Container = styled.div`
-background-color: ${(props) => props.theme.primary};
+  background-color: ${(props) => props.theme.primary};
   display: flex;
   flex-direction: column;
 

@@ -19,6 +19,14 @@ const ContentContainer = styled.div`
   position: relative;
   justify-content: center;
   margin: 80px;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    margin-bottom: 40px;
+  }
 `;
 
 const InfoContainer = styled.div`
@@ -34,6 +42,10 @@ const InfoContainer = styled.div`
   background-color: white;
   box-shadow: 32px 32px ${(props) => props.theme.primaryGradient};
   border-radius: 40px;
+  margin-bottom: 40px;
+  @media screen and (max-width: 768px) {
+    position: static;
+  }
 `;
 
 const Title = styled.h2`
@@ -51,7 +63,6 @@ const Description = styled.p`
   color: black;
   overflow: auto;
   word-break: break-word;
-  
 `;
 
 const ImageWrapper = styled.div`
@@ -59,6 +70,10 @@ const ImageWrapper = styled.div`
   padding: 40px 180px 40px 40px;
   // max-width: 500px;
   max-height: 600px;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const ImageLayer = styled.img`
